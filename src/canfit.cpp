@@ -112,20 +112,17 @@ theta cnf::determineTheta(Box& holder, Box& held, double interval){
     }
     */
     
-    if (!ret.exists){
-        for (double i = 0; i < (PI/2); i += interval){
-            for (double n = 0; n < (PI/2); n += interval){
-                if (((((heldBroad.length * cos(i)) + (heldBroad.width * sin(i))) * ((heldTop.length * cos(n)) + (heldTop.width * sin(n)))) <= (holderBroad.length * holderTop.length)) &&
-                ((((heldBroad.length * sin(i)) + (heldBroad.width * cos(i))) * ((heldTop.length * sin(n)) + (heldTop.width * cos(n)))) <= (holderBroad.width * holderTop.width))){
-                    ret.th1 = i;
-                    ret.th2 = n;
+        for (double n = 0; n < (PI/4); n += interval){
+            for (double i = 0; i < (PI/4); i += interval){
+                if ((sqrt(((heldBroad.length * cos(i)) + (heldBroad.width * sin(i))) * ((heldTop.length * cos(n)) + (heldTop.width * sin(n)))) <= sqrt(holderBroad.length * holderTop.length)) &&
+                (sqrt(((heldBroad.length * sin(i)) + (heldBroad.width * cos(i))) * ((heldTop.length * sin(n)) + (heldTop.width * cos(n)))) <= sqrt(holderBroad.width * holderTop.width))){
+                    ret.th1 = n;
+                    ret.th2 = i;
                     ret.has2 = true;
                     ret.exists = true;
-                    break;
                 }
             }
         }
-    }
 
     return ret;
 }

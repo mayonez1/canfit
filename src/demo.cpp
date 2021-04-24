@@ -7,7 +7,7 @@ using namespace std;
 int main(int argc, char **argv){
     const double PI = 3.141592653;
 
-    double interval = (PI/64);
+    double interval = (PI/2048);
 
     double x, y, z;
 
